@@ -1,0 +1,236 @@
+/* Base responsive styles */
+@media (max-width: 1200px) {
+    :root {
+      --container-width: 960px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    :root {
+      --container-width: 720px;
+    }
+    
+    .book-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    
+    .book-cover {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    :root {
+      --container-width: 540px;
+      --header-height: 60px;
+    }
+    
+    .book-grid {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+    }
+    
+    .book-cover {
+      height: 220px;
+    }
+    
+    .book-title {
+      font-size: 16px;
+    }
+    
+    .book-author {
+      font-size: 13px;
+    }
+    
+    .section-title {
+      font-size: 24px;
+    }
+    
+    .section-subtitle {
+      font-size: 16px;
+    }
+    
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .footer-links {
+      margin-top: 15px;
+      justify-content: center;
+    }
+    
+    .footer-link:first-child {
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header-container {
+      flex-wrap: wrap;
+    }
+    
+    .logo {
+      font-size: 20px;
+    }
+    
+    .nav-list {
+      display: none;
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      background-color: var(--background-color);
+      box-shadow: var(--shadow);
+      flex-direction: column;
+      padding: 10px 0;
+    }
+    
+    .nav-list.active {
+      display: flex;
+    }
+    
+    .nav-item {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .nav-link {
+      display: block;
+      padding: 12px 0;
+      border-radius: 0;
+    }
+    
+    .mobile-menu-toggle {
+      display: block;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Responsive catalog */
+    .book-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .book-cover {
+      height: 200px;
+    }
+    
+    .category-list {
+      overflow-x: auto;
+      padding-bottom: 10px;
+      flex-wrap: nowrap;
+    }
+    
+    .category-item {
+      white-space: nowrap;
+    }
+    
+    /* Forms */
+    .form-container {
+      padding: 20px 15px;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .book-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .book-cover {
+      height: 240px;
+    }
+    
+    .auth-buttons .btn {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Fix for reader overlay controls */
+  @media (max-width: 480px) {
+    .reader-controls {
+      padding: 10px;
+    }
+    
+    .page-navigation {
+      flex-direction: column;
+    }
+    
+    .page-count {
+      margin: 10px 0;
+    }
+    
+    .control-buttons button {
+      padding: 8px;
+      margin: 0 3px;
+    }
+    
+    .reader-settings-panel {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  
+  /* Mobile menu button - hidden on larger screens */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+  }
+  
+  @media (min-width: 577px) {
+    .nav-list {
+      display: flex !important;
+    }
+  }
+  
+  /* Landscape mode for mobile */
+  @media (max-height: 450px) and (orientation: landscape) {
+    .book-grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
+    .book-cover {
+      height: 180px;
+    }
+    
+    .reader-container {
+      margin-top: 0;
+    }
+    
+    :root {
+      --header-height: 50px;
+      --footer-height: 60px;
+    }
+  }
+  
+  /* Reader adjustments for mobile */
+  @media (max-width: 768px) {
+    .reader-container {
+      padding: 0;
+    }
+    
+    .book-content {
+      padding: 15px 10px;
+    }
+    
+    .book-content-inner {
+      max-width: 100%;
+    }
+    
+    /* Hide certain controls on small screens */
+    .secondary-controls {
+      display: none;
+    }
+    
+    /* Make sure navigation arrows are easily tappable */
+    .page-nav-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+  }

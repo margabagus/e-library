@@ -1,0 +1,412 @@
+/* E-book Reader Styles */
+
+:root {
+    --reader-background: #f8f8f8;
+    --reader-text-color: #333;
+    --reader-font-size: 18px;
+    --reader-line-height: 1.6;
+    --reader-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --reader-max-width: 800px;
+    --reader-padding: 30px;
+    --controls-background: rgba(255, 255, 255, 0.9);
+    --controls-height: 60px;
+    --control-btn-size: 40px;
+  }
+  
+  /* Theme variables */
+  .theme-light {
+    --reader-background: #f8f8f8;
+    --reader-text-color: #333;
+  }
+  
+  .theme-sepia {
+    --reader-background: #f4ecd8;
+    --reader-text-color: #5b4636;
+  }
+  
+  .theme-dark {
+    --reader-background: #222;
+    --reader-text-color: #ddd;
+  }
+  
+  /* Font size variables */
+  .font-small {
+    --reader-font-size: 16px;
+  }
+  
+  .font-medium {
+    --reader-font-size: 18px;
+  }
+  
+  .font-large {
+    --reader-font-size: 20px;
+  }
+  
+  .font-xlarge {
+    --reader-font-size: 22px;
+  }
+  
+  /* Main reader container */
+  .reader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--reader-background);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 9000;
+  }
+  
+  /* Book content area */
+  .book-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--reader-padding);
+  }
+  
+  .book-content-inner {
+    max-width: var(--reader-max-width);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .book-page {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--reader-font-family);
+    font-size: var(--reader-font-size);
+    line-height: var(--reader-line-height);
+    color: var(--reader-text-color);
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .book-page.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  .book-page.inactive {
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  /* Loading indicator */
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  /* Reader controls */
+  .reader-controls {
+    height: var(--controls-height);
+    background-color: var(--controls-background);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 3;
+  }
+  
+  .control-left, .control-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .control-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .page-navigation {
+    display: flex;
+    align-items: center;
+  }
+  
+  .page-nav-btn {
+    width: var(--control-btn-size);
+    height: var(--control-btn-size);
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .page-nav-btn:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .page-nav-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .page-count {
+    margin: 0 15px;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+  
+  .control-buttons button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 18px;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .control-buttons button:hover {
+    color: var(--secondary-color);
+  }
+  
+  .exit-reader-btn {
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .exit-reader-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Reader settings panel */
+  .reader-settings-panel {
+    position: absolute;
+    bottom: var(--controls-height);
+    right: 0;
+    width: 300px;
+    background-color: var(--controls-background);
+    border-radius: var(--radius) 0 0 0;
+    box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 4;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .reader-settings-panel.active {
+    transform: translateY(0);
+  }
+  
+  .settings-group {
+    margin-bottom: 15px;
+  }
+  
+  .settings-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  .theme-options, .font-size-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .theme-option, .font-size-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  
+  .theme-option.active, .font-size-option.active {
+    border-color: var(--primary-color);
+  }
+  
+  .theme-light-option {
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  .theme-sepia-option {
+    background-color: #f4ecd8;
+    color: #5b4636;
+  }
+  
+  .theme-dark-option {
+    background-color: #222;
+    color: #ddd;
+  }
+  
+  .font-size-option {
+    font-weight: bold;
+  }
+  
+  /* Page turning animation */
+  .page-turn-right {
+    animation: turnRight 0.5s ease-in-out;
+  }
+  
+  .page-turn-left {
+    animation: turnLeft 0.5s ease-in-out;
+  }
+  
+  @keyframes turnRight {
+    0% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(100px); opacity: 0; }
+    51% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes turnLeft {
+    0% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(-100px); opacity: 0; }
+    51% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* PDF specific styles */
+  .pdf-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .pdf-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .pdf-page canvas {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* EPUB specific styles */
+  .epub-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .epub-content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  /* Touch controls for mobile */
+  .touch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - var(--controls-height));
+    z-index: 2;
+  }
+  
+  .touch-left, .touch-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30%;
+  }
+  
+  .touch-left {
+    left: 0;
+  }
+  
+  .touch-right {
+    right: 0;
+  }
+  
+  /* Additional EPUB styles to ensure content is well-formatted */
+  .epub-content h1, .epub-content h2, .epub-content h3, 
+  .epub-content h4, .epub-content h5, .epub-content h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+  }
+  
+  .epub-content p {
+    margin-bottom: 1em;
+  }
+  
+  .epub-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+  }
+  
+  /* Progressive enhancement for better reading experience */
+  @media (min-width: 1200px) {
+    :root {
+      --reader-max-width: 800px;
+    }
+  }
+  
+  @media (max-width: 1199px) {
+    :root {
+      --reader-max-width: 700px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    :root {
+      --reader-max-width: 600px;
+      --reader-padding: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    :root {
+      --reader-max-width: 100%;
+      --reader-padding: 15px;
+      --reader-font-size: 16px;
+      --controls-height: 50px;
+    }
+  }

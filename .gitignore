@@ -1,0 +1,76 @@
+# Rust
+/backend/target/
+/backend/Cargo.lock
+*.rs.bk
+
+# PHP
+/vendor/
+composer.lock
+
+# Environment variables
+.env
+.env.backup
+
+# Logs
+/storage/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Generated files
+/frontend/public/hot
+/frontend/public/storage
+/storage/*.key
+
+# Build files
+/dist/
+/tmp/
+/out-tsc/
+/build/
+
+# Testing files
+/coverage/
+
+# Local development configurations
+/.vagrant/
+Homestead.json
+Homestead.yaml
+
+# Database backups
+*.sql
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.rar
+*.7z
+
+# Book content & covers (store these elsewhere)
+/storage/books/*
+!/storage/books/.gitkeep
+/storage/covers/*
+!/storage/covers/.gitkeep
+
+# Deployment files
+deploy-exclude.txt
